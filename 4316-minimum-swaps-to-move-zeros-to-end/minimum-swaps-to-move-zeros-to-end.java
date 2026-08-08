@@ -1,26 +1,23 @@
 class Solution {
     public int minimumSwaps(int[] nums) {
-        if (nums.length == 0) return 0;
-
-        int k = 0;
-        
-       
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == 0) {
-                k++;
-            }
+     int i=0;
+     int j = nums.length-1;
+     int count =0;
+     while(i<j){
+        if(nums[i]!=0){
+            i++;
+        }else if(nums[j]==0){
+            j--;
         }
-        
-        int count = nums.length - k;
-        int swap = 0;
-        
-      
-        for (int i = 0; i < count; i++) {
-            if (nums[i] == 0) {
-                swap++;
-            }
+        else{
+            int temp = nums[i];
+            nums[i]=nums[j];
+            nums[j]=temp;
+            i++;
+            j--;
+            count++;
         }
-
-        return swap;
+     }  
+     return count;
     }
 }
